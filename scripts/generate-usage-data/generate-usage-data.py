@@ -17,10 +17,20 @@ for _ in range(58):
 
 def ingest(events):
     remainder = events
-    with open('ingest.json', 'w') as f:
-        json.dump(events, f)
-    f.close()
-    print('events sent successfully')
+    while len(remainder) > 0:
+        pprint(remainder[:100])
+
+        response = requests.post(
+            "https://api.metronome.com/v1/ingest",
+            headers={
+                "Authorization": f"Bearer {token}",
+            },
+            json=remainder[:100]
+        )
+
+        if response.status_code != 200:
+            print(f'ERROR {response.status_code}: {response.text}')
+        remainder = remainder[100:]
 
 def random_monthly_target(n):
     return random.randint(n, 2*n)
