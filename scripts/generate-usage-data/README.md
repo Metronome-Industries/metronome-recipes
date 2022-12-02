@@ -1,15 +1,12 @@
 # Overview
 
-Python3 script which shows how to generate usage data for two customers.
+The folder contains Python3 scripts that show how to generate usage data.
 
 # Pre-requisites
 
 python3 installed
 
-A metronome [API Token](https://docs.metronome.com/using-the-api/authorization/) added to the script.
-```
-token = '<API Token>'
-```
+A metronome [API Token](https://docs.metronome.com/using-the-api/authorization/) stored in an `API_TOKEN` environment variable.
 
 Install packages:
 
@@ -19,37 +16,30 @@ python3 -m pip install -r requirements.txt
 
 # Scripts
 
-## generate-usage-data
-
-This script generates usage data for two customers (`EnterpriseCustomer`, `StandardCustomer`) who can be on two plan types.
-
-```
-python3 ./generate-usage-data.py 
-```
-For the `EnterpriseCustomer` the usage events look like:
+- The `generate-usage-GB-Ingested.py` file creates sample usage data in the below format
 ```
 {
-  "timestamp": "2022-12-01T17:29:54+00:00",
-  "transaction_id": "abc123c28b2cb34dac8cbf0b9c30cedf95",
-  "customer_id": "abcd1234-70b9-476c-9ef9-78064157ff5f",
+  "timestamp": "2022-12-02T03:19:45+00:00",
+  "transaction_id": "7115fc41be024c969a4f22a165c767a2",
+  "customer_id": "abdc7400-7fb9-457c-858e-8ca12347e0f0",
   "event_type": "gb_logs_ingested",
   "properties": {
-    "gb_ingested": "1234",
-    "region": "eu-west-1",
-    "cloud": "aws"
+    "gb_ingested": "12.7",
+    "cloud": "gcp",
+    "region": "eu-west-1"
   }
 }
 ```
 
-For the `StandardCustomer` the usage events look like:
+- The `generate-usage-MAU-data.py` file creates sample usage data in the below format
 ```
 {
-  "timestamp": "2022-12-01T17:29:54+00:00",
-  "transaction_id": "abc123c28b2cb34dac8cbf0b9c30cedf95",
-  "customer_id": "abcd1234-70b9-476c-9ef9-78064157ff5f",
-  "event_type": "gb_logs_ingested",
+  "timestamp": "2022-12-02T03:23:58+00:00",
+  "transaction_id": "0c9d7f5a7548448b956fcfe2479461d1",
+  "customer_id": "abdc7400-7fb9-457c-858e-8ca12347e0f0",
+  "event_type": "user_login",
   "properties": {
-    "user_id": "f7aa97e8f34349df8070ea1c8793d109",
+    "user_id": "8a0dec9eb3bd48d0ab3f3eb51ecc6b9b",
     "user_level": "admin"
   }
 }
