@@ -1,6 +1,5 @@
 python-dotenv
 argparse
-python-dateutil
 requests
 uuid
 json

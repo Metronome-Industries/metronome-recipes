@@ -1,7 +1,6 @@
 from datetime import datetime, timedelta, timezone
 from pprint import pprint
 import requests, argparse, os
-from dateutil.parser import parse
 import random
 import uuid
 import json
@@ -39,7 +38,6 @@ def ingest(events):
             },
             json=remainder[:100]
         )
-        print(response.status_code)
         if response.status_code != 200:
             print(f'ERROR {response.status_code}: {response.text}')
         remainder = remainder[100:]

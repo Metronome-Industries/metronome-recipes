@@ -1,7 +1,6 @@
 from datetime import datetime, timedelta, timezone
 from pprint import pprint
 import requests, argparse, os
-from dateutil.parser import parse
 import random
 import uuid
 import json
