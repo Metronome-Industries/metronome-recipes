@@ -3,7 +3,6 @@ from pprint import pprint
 import requests, argparse, os
 import random
 import uuid
-import json
 import requests
 from dotenv import load_dotenv
 load_dotenv()
