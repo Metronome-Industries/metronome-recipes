@@ -1,5 +1,4 @@
 from datetime import datetime, timedelta, timezone
-from pprint import pprint
 import requests, argparse, os
 import random
 import uuid
@@ -28,8 +27,6 @@ if days_of_data > 33 or days_of_data < 1:
 def ingest(events):
     remainder = events
     while len(remainder) > 0:
-        pprint(remainder[:100])
-
         response = requests.post(
             "https://api.metronome.com/v1/ingest",
             headers={
