@@ -84,7 +84,7 @@ make_json(csvFilePath)
 
 jsondata = total_events
  
-data_file = open('output1.csv', 'w', newline='')
+data_file = open('output.csv', 'w', newline='')
 csv_writer = csv.writer(data_file)
  
 count = 0
@@ -95,7 +95,6 @@ for data in jsondata:
             header = data.keys() 
             headervalues = list(header)+list(data['properties'].keys())
             headervalues.remove('properties')
-            print(headervalues)
             csv_writer.writerow(headervalues)
             count += 1
         else:
@@ -104,10 +103,8 @@ for data in jsondata:
             propertyRowValues = list(data['properties'].values())
             rowList.pop(len(rowList)-1)
             rowvalues = rowList+propertyRowValues
-            print(rowvalues)
             csv_writer.writerow(rowvalues)
             count += 1 
- 
 data_file.close()
 
 
