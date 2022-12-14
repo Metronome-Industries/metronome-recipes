@@ -16,6 +16,7 @@ load_dotenv()
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--days_of_data', type=int, required=False, default=33)
+parser.add_argument('--customer_id', type=str, required=False)
 parser.add_argument('--event_type', type=str, required=False, default="event_type")
 parser.add_argument('--filename', type=str, required=True, default="example_usage.csv")
 
@@ -24,6 +25,7 @@ if not token:
     raise ValueError("Set API_TOKEN environment variable to metronome API key")
 
 args = parser.parse_args()
+customer_id = args.customer_id
 
 days_of_data = args.days_of_data
 if days_of_data > 33 or days_of_data < 1:
@@ -58,7 +60,6 @@ def make_json(csvFilePath):
         for rows in csvReader:
              
             data.append(rows)
-            rows
         for items in data:
             time_delta = random.randint(0,hours_of_data)
             t = datetime.now(timezone.utc) - timedelta(hours=time_delta)
@@ -73,7 +74,7 @@ def make_json(csvFilePath):
                 event = {
                     "timestamp": t.isoformat(),
                     "transaction_id": uuid.uuid4().hex,
-                    "customer_id": items['customer_id'],
+                    "customer_id": customer_id,
                     "event_type": event_type,
                     "properties": properties
                 }
