@@ -39,7 +39,7 @@ def ingest(events):
     while len(remainder) > 0:
         data_to_send = remainder[:100]
         response = requests.post(
-            "https://api.staging.metronome.com/v1/ingest",
+            "https://api.metronome.com/v1/ingest",
             headers={
                 "Authorization": f"Bearer {token}",
             },
