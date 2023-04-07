@@ -3,7 +3,6 @@ import requests, argparse, os
 import json
 import random
 import uuid
-import requests
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -13,6 +12,7 @@ parser.add_argument('--events_per_hour', type=int, required=False, default=1)
 parser.add_argument('--max_events', type=int, required=False, default=10000000)
 parser.add_argument('--days_of_data', type=int, required=False, default=33)
 parser.add_argument('--dry_run', type=bool, required=False, default=False)
+parser.add_argument('--api_url', type=str, required=False, default="https://api.metronome.com")
 
 token = os.getenv('API_TOKEN')
 if not token:
@@ -39,7 +39,7 @@ def ingest(events):
     while len(remainder) > 0:
         data_to_send = remainder[:100]
         response = requests.post(
-            "https://api.metronome.com/v1/ingest",
+            f"{args.api_url}/v1/ingest",
             headers={
                 "Authorization": f"Bearer {token}",
             },
