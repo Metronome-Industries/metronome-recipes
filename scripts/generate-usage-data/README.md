@@ -44,3 +44,19 @@ python3 -m pip install -r requirements.txt
   }
 }
 ```
+
+- The `generate-seats-usage.py` file creates sample seats data in the below format
+```
+{
+  "timestamp": "2022-12-02T03:23:58+00:00",
+  "transaction_id": "0c9d7f5a7548448b956fcfe2479461d1",
+  "customer_id": "abdc7400-7fb9-457c-858e-8ca12347e0f0",
+  "event_type": "account_heartbeat",
+  "properties": {
+    "developer_seats": 4,
+    "developer_seats_in_use": 4,
+    "read_only_seats": 20,
+    "read_only_seats_in_use": 5
+  }
+}
+```
