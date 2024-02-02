@@ -86,8 +86,19 @@ while t < datetime.now(timezone.utc):
         append_event('KafkaNetworkRead', {
             "quantity": random_monthly_target(10000),
             "resource.provider": "aws",
-            "resource.durability": random.choice(["low", "high"]),
-            "resource.infra": random.choice(["basic", "custom"]),
+            "resource.durability": random.choice(["low"]),
+            "resource.infra": random.choice(["basic"]),
+            "resource.networking_type": "internet",
+            "resource.data_transfer": "internet",
+            "resource_id": random.choice(["resource-1", "resource-2", "resource-3"]),
+            "resource.account_id": random.choice(["account-1", "account-2"]),
+            "resource.region": random.choice(["eu-west-1", "us-west-2"]),
+        })
+        append_event('KafkaNetworkWrite', {
+            "quantity": random_monthly_target(10000),
+            "resource.provider": "aws",
+            "resource.durability": random.choice(["low"]),
+            "resource.infra": random.choice(["basic"]),
             "resource.networking_type": "internet",
             "resource.data_transfer": "internet",
             "resource_id": random.choice(["resource-1", "resource-2", "resource-3"]),
