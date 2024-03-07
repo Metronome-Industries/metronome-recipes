@@ -8,7 +8,6 @@ import random
 import uuid
 import requests
 from dotenv import load_dotenv
-load_dotenv()
 
 load_dotenv()  # take environment variables from .env.
 
@@ -24,9 +23,7 @@ csv_file_path = args.csv_file
 if not csv_file_path:
     raise ValueError("csv_file must be set")
 
-api_url = os.getenv('API_URL')
-if not api_url:
-    api_url = 'https://api.metronome.com'
+api_url = os.getenv('API_URL', 'https://api.metronome.com')
 
 headers = {
     "Authorization": f"Bearer {token}",
@@ -92,7 +89,7 @@ with open(csv_file_path) as csv_file:
             custom_field = column.split(':')[1]
             custom_field_columns.append(custom_field)
 
-            if not custom_field in current_custom_fields:
+            if custom_field not in current_custom_fields:
                 print(
                     f"Custom field {custom_field} not found in Metronome, creating")
                 custom_field_create_response = requests.post(
