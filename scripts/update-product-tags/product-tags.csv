@@ -1,0 +1,3 @@
+product_name,effective_at,tags,field:unique_id,field:unit
+my test product 1,2022-01-01T00:00:00Z,"tag_1,tag_2",prod1_id,GB
+my test product 2,2020-01-01T00:00:00Z,"tag_3",prod2_id,Minutes
