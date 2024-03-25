@@ -20,22 +20,21 @@ The `update-rate-card-rates.py` file will read the specified csv file and execut
 
 The example file contains:
 
-- rate_card_name
 - product_name
 - price
 - rate_type
 - entitled
 - effective_at
-- pricing_group_values
+- optional fields which will serve as pricing group keys / values
 
 For example:
 
 ```csv
-rate_id,rate_card_id,rate_card_name,product_id,product_name,price,rate_type,entitled,effective_at,pricing_group_values
-rate_00b4b05fb03063fdfdb8659546eac0fcd7a813a61ece4dfeb1f9226f8cdc8998,rate_card_40e1111a53098cdb1abd6919f9d0c3e80d5ce23368cabc1eaf6e728e6df7d729,Base Rates,product_01a5d1b747ee119aaac52187259bcf7527bf404fce3f2c6ccbfd2c5e4a67975b,My product,0,flat,true,2020-10-01T00:00:00.000Z,"{""resource.provider"":""gcp""}"
-rate_012f37b5b409d5dd9434729a73983486daaeb04bac0367a1fa4fe7554c6cecaf,rate_card_40e1111a53098cdb1abd6919f9d0c3e80d5ce23368cabc1eaf6e728e6df7d729,Base Rates,product_01a5d1b747ee119aaac52187259bcf7527bf404fce3f2c6ccbfd2c5e4a67975b,My product,0,flat,true,2020-10-01T00:00:00.000Z,"{""resource.provider"":""gcp""}"
+product_name,price,rate_type,entitled,effective_at,resource.provider,resource.region
+My product,0,flat,true,2020-10-01T00:00:00.000Z,gcp,uswest2
+My product,0,flat,true,2020-10-01T00:00:00.000Z,aws,us-east-2
 ```
 
 # Usage
 
-API_TOKEN=<your token> python3 ./update-rate-card-rates.py --csv_file ./updates.csv
+API_TOKEN=<your token> python3 ./update-rate-card-rates.py --csv_file ./updates.csv --rate_card_name "Base Rates"
